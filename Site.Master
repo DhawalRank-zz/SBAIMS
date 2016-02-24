@@ -1,0 +1,262 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SBAIMS.SiteMaster" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>SBAIMS</title>
+    <link rel="icon" type="image/ico" href="/SBAicon.ico" />
+    <script src="Scripts/jquery-2.1.0.js" type="text/javascript"></script>
+    <script src="Scripts/bootstrap.js" type="text/javascript"></script>
+    <script src="Scripts/Site.js" type="text/javascript"></script>
+    <link href="Styles/bootstrap.css" rel="stylesheet" type="text/css" />
+
+    <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/jquery-ui-1.10.4.custom.css" rel="stylesheet" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <form runat="server" id="mainform"> 
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnablePartialRendering="true">
+    </asp:ToolkitScriptManager>
+
+
+
+    <!-- ******************** 1.) About SBAIMS Modal ******************** -->
+    <div class="modal fade" id="aboutsbaims" data-backdrop="static" tabindex="1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;</button>
+                    <table class="table-borderless" width="100%">
+                        <tr>
+                            <td style="width: 40%" align="center">
+                                <img src="sbalarge.png" class="img " alt="SBA_Logo" height="100" width="180">
+                            </td>
+                            <td style="width: 60%" align="left">
+                                <h2>
+                                    About&nbsp S.B.A.I.M.S.</h2>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-body">
+                    <h5 style="text-align: justify; line-height: 22px;">
+                        <b>Shantinath Book Agency Inventory Management System (S.B.A.I.M.S.)</b><br />
+                        <br />
+                        This is an inventory management and invoice generation software designed and developed
+                        for the exclusive use by the firm <b>Shantinath Book Agency</b>, a pioneer in Books
+                        & Magazine distribution and retailing.</h5>
+                    <br />
+                </div>
+                <div class="modal-footer black">
+                    <h5 align="left" style="color: #E2E2E2;">
+                        &copy All Copyrights Reserved By: Shantinath Book Agency<span style="display: inline-block;
+                            width: 60px;"></span>
+                        <button type="button" id="mdl1okay" class="btn btn-info" data-dismiss="modal" style="line-height: 0.6;
+                            background-color: #196CA3">
+                            &nbsp&nbsp<b> Okay! </b>&nbsp&nbsp</button></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ******************** 2.) Logout Confirmation Modal ******************** -->
+    <div class="modal fade" id="logoutconfirm" tabindex="1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;</button>
+                    <h4 class="modal-title">
+                        Logout Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <h5>
+                        Are you sure you want to Logout ?
+                    </h5>
+                    <br />
+                </div>
+                <div class="modal-footer">
+                    <asp:Button CssClass="btn btn-primary" Text="Yes" ID="yeslogout" OnClick="yeslogout_Click"
+                        runat="server" CausesValidation="False"></asp:Button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ******************** 3.) Delete Confirmation Modal ******************** -->
+    <div class="modal fade" id="confirmdelete" data-backdrop="static" tabindex="1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        Confirm Delete</h4>
+                </div>
+                <div class="modal-body">
+                    <h5>
+                        <b>Are you sure you want to Delete this Entry? </b>
+                    </h5>
+                    <br />
+                </div>
+                <div class="modal-footer">
+                    <asp:Button ID="deletebooks" runat="server" Text="Yes. Delete" CssClass="btn btn-danger"
+                        ValidationGroup="rfvdb" OnClick="deletebooks_Click" />
+                    <button type="button" class="btn btn-info" data-dismiss="modal">
+                        No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ******************** 4.) Change Password Modal ******************** -->
+    <div class="modal fade" id="changepassword" tabindex="1" role="dialog" aria-labelledby="myModalLabe2"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;</button>
+                    <h4 class="modal-title">
+                        Change Password</h4>
+                </div>
+                <div class="modal-body table-responsive">
+                    <table width="400px" align="center">
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="currentpassword" placeholder="Enter Current Password"
+                                        runat="server" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <br />
+                                    <input type="password" class="form-control" id="newpassword" placeholder="Enter New Password"
+                                        runat="server" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="confirmpassword" placeholder="Confirm New Password"
+                                        runat="server" />
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer table-responsive">
+                    <table width="400px" align="center">
+                        <tr>
+                            <td>
+                                <button id="btnchngpwd" type="button" class="btn btn-primary btn-block" style="line-height: 0.5;
+                                    font-size: 15px" runat="server">
+                                    Change Password</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ********************  ******************** End of All Modals ********************  ******************** -->
+
+    <div class="supreme-container" id="mycontent">
+       
+        <div class="table-responsive">
+            <table class="table table-borderless table-condensed black table-responsive" style="position: fixed;
+                width: 100%; z-index: 2;">
+                <tr>
+                    <td width="24%">
+                        <a href="Home.aspx"><img src="sbalogo.png" style="vertical-align: middle; padding-top: 3px; padding-left: 3px"
+                            class="img img-responsive" alt="SBA_Logo" height="55" width="100"></a>
+                    </td>
+                    <td width="52%" align="center">
+                        <a href="Home.aspx" style="text-decoration:none;"><p style="color: #E2E2E2; vertical-align: middle; font-size: 35px;">
+                            S.B.A.I.M.S.</p></a>
+                    </td>
+                    <td width="24%" align="right" style="padding-top: 15px">
+                        <ul class="uldl">
+                            <li class="dropdown" style="padding-bottom: 8px; padding-right: 10px"><a href=""
+                                class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"
+                                    style="color: #E2E2E2; font-size: 30px; vertical-align: middle;"></span></a>
+                                <ul class="dropdown-menu" style="padding-top: 10px; padding-bottom: 10px;">
+                                    <li align="left" class="ddli" id="li1"><a data-toggle="modal" href="#changepassword">
+                                        Change Password</a></li>
+                                    <li align="left" class="ddli" id="li2"><a href="#">User Manual</a></li>
+                                    <li align="left" class="ddli" id="li3"><a data-toggle="modal" href="#aboutsbaims">About
+                                        &nbsp S.B.A.I.M.S.</a></li>
+                                    <li align="left" class="ddli" id="li4"><a data-toggle="modal" href="#logoutconfirm">
+                                        Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    
+
+
+    <div class="nav">
+                <ul class="nav nav-tabs nav-justified prntnvtabs">
+            
+            <li class="dropdown em3"><a class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;" href="#"><span class="glyphicon glyphicon-plus"
+                        style="font-size: 20px;"></span>&nbsp Add <span class="caret" style="font-size: 15px;"></span></a>
+               <ul class="dropdown-menu">
+                    <li class="addli"><a href="AddToInventory.aspx" style="font-size: 20px;"><span class="glyphicon glyphicon-book"
+                        style="font-size: 20px;"></span>&nbsp Books</a></li>
+                    <li class="addli"><a href="CreateInvoice.aspx" style="font-size: 20px;"><span class="glyphicon glyphicon-print"
+                        style="font-size: 20px;"></span>&nbsp Invoice</a></li>
+                </ul>
+                </li>
+
+            <li class="dropdown em3"><a class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;" href="#"><span class="glyphicon glyphicon-eye-open"
+                        style="font-size: 20px;"></span>&nbsp View <span class="caret" style="font-size: 15px;"></span></a>
+               <ul class="dropdown-menu">
+                    <li class="viewli"><a href="ViewInventory.aspx" style="font-size: 20px;"><span class="glyphicon glyphicon-inbox"
+                        style="font-size: 20px;"></span>&nbsp Inventory</a></li>
+                    <li class="viewli"><a href="ViewInvoice.aspx" style="font-size: 20px;"><span class="glyphicon glyphicon-list-alt"
+                        style="font-size: 20px;"></span>&nbsp Invoice</a></li>
+                    <li class="viewli"><a href="Graphs.aspx" style="font-size: 20px;"><span class="glyphicon glyphicon-stats"
+                        style="font-size: 20px;"></span>&nbsp Graphs</a></li>
+                </ul>
+            </li>
+                    
+                   <li class="dropdown em3"><a class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;" href="#"><span class="glyphicon glyphicon-arrow-up"
+                        style="font-size: 20px;"></span>&nbsp Update <span class="caret" style="font-size: 15px;"></span></a>
+               <ul class="dropdown-menu">
+                    <li class="updateli"><a href="UDInventory.aspx" style="font-size: 20px;"><span class="glyphicon glyphicon-book"
+                        style="font-size: 20px;"></span>&nbsp Book Data</a></li>
+                    <li class="updateli"><a href="UDCustomer.aspx" style="font-size: 20px;"><span class="glyphicon glyphicon-user" style="color:#050129"
+                        style="font-size: 20px;"></span>&nbsp Customer Data</a></li> 
+                    <li class="updateli"><a href="UPublisher.aspx" style="font-size: 20px;"><span class="glyphicon glyphicon-user" style="color:#B1B1B2"
+                        style="font-size: 20px;"></span>&nbsp Publisher Data</a></li> 
+
+                </ul>
+                </li>
+        </ul>
+
+        <div class="tab-content table-responsive" style="margin-top: 140px;">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+
+    </div>
+
+    </div>
+</form>
+
+</body>
+</html>

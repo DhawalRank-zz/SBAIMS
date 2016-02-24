@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SBAIMS" Class="MyDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=LORDSHIVA-PC\SQLEXP2008;Initial Catalog=SBAIMS;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SBAIMSConnectionString2" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.USP_BOOKDETAILS" Method="USP_BOOKDETAILS">
+    <ElementType Name="USP_BOOKDETAILSResult">
+      <Column Name="B_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="B_Title" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="B_Author" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="B_Quantity" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="B_Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="B_Commission" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="B_Shelf" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="B_Genre" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="B_Binding" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="B_Pages" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Imported" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="P_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.USP_GETINVOICENO" Method="USP_GETINVOICENO">
+    <ElementType Name="USP_GETINVOICENOResult">
+      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.USP_GETCUSTOMER" Method="USP_GETCUSTOMER">
+    <ElementType Name="USP_GETCUSTOMERResult">
+      <Column Name="C_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="C_Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="C_City" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="C_Contact" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="C_Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.USP_GETBOOK" Method="USP_GETBOOK">
+    <Parameter Name="B_Id" Parameter="b_Id" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType Name="USP_GETBOOKResult">
+      <Column Name="B_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="B_Title" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="B_Author" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="B_Quantity" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="B_Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="B_Commission" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="B_Shelf" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="B_Genre" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="B_Binding" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="B_Pages" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Imported" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="P_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.USP_ADDINVOICEBOOK" Method="USP_ADDINVOICEBOOK">
+    <Parameter Name="T002_INVOICEBOOKID" Parameter="t002_INVOICEBOOKID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="T001_INVOICEOD" Parameter="t001_INVOICEOD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="B_Id" Parameter="b_Id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="T002_QTY" Parameter="t002_QTY" Type="System.Int32" DbType="Int" />
+    <Parameter Name="T002_TOTALRS" Parameter="t002_TOTALRS" Type="System.Decimal" DbType="Decimal(18,2)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.USP_DELETEINVOICEBOOK" Method="USP_DELETEINVOICEBOOK">
+    <Parameter Name="T002_INVOICEBOOKID" Parameter="t002_INVOICEBOOKID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.USP_GETINVOICEBOOK" Method="USP_GETINVOICEBOOK">
+    <Parameter Name="T001_INVOICEOD" Parameter="t001_INVOICEOD" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType Name="USP_GETINVOICEBOOKResult">
+      <Column Name="T002_INVOICEBOOKID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="T001_INVOICEOD" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="B_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="T002_QTY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="T002_TOTALRS" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="B_Id1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="B_Title" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="B_Author" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="B_Quantity" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="B_Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="B_Commission" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="B_Shelf" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="B_Genre" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="B_Binding" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="B_Pages" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Imported" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="P_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.USP_ADDINVOICE" Method="USP_ADDINVOICE">
+    <Parameter Name="T001_INVOICEOD" Parameter="t001_INVOICEOD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="C_Id" Parameter="c_Id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="T001_DATE" Parameter="t001_DATE" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="T001_TOTALRS" Parameter="t001_TOTALRS" Type="System.Decimal" DbType="Decimal(18,2)" />
+    <Parameter Name="T001_DISCOUNT" Parameter="t001_DISCOUNT" Type="System.Decimal" DbType="Decimal(18,2)" />
+    <Parameter Name="T001_TAX" Parameter="t001_TAX" Type="System.Decimal" DbType="Decimal(18,2)" />
+    <Parameter Name="T001_NETRS" Parameter="t001_NETRS" Type="System.Decimal" DbType="Decimal(18,2)" />
+    <Parameter Name="T001_NOTE" Parameter="t001_NOTE" Type="System.String" DbType="VarChar(150)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.USP_GETINVOICEDETAILS" Method="USP_GETINVOICEDETAILS">
+    <Parameter Name="T001_INVOICEOD" Parameter="t001_INVOICEOD" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="C_Id" Parameter="c_Id" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="T001_DATE" Parameter="t001_DATE" Type="System.DateTime" DbType="Date" />
+    <ElementType Name="USP_GETINVOICEDETAILSResult">
+      <Column Name="T001_INVOICEOD" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="C_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="T001_DATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="T001_TOTALRS" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="T001_DISCOUNT" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="T001_TAX" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="T001_NETRS" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="T001_NOTE" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="C_Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="C_Name1" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.USP_GETINVOICE" Method="USP_GETINVOICE">
+    <Parameter Name="T001_INVOICEOD" Parameter="t001_INVOICEOD" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="C_Id" Parameter="c_Id" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="T001_DATE" Parameter="t001_DATE" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="C_City" Parameter="c_City" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType Name="USP_GETINVOICEResult">
+      <Column Name="T001_INVOICEOD" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="C_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="T001_DATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="T001_TOTALRS" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="T001_DISCOUNT" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="T001_TAX" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="T001_NETRS" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="T001_NOTE" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="T002_INVOICEBOOKID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="B_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="T002_QTY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="T002_TOTALRS" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="C_Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="C_City" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="C_Contact" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="B_Title" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="B_Author" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="B_Quantity" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="B_Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="B_Commission" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="B_Shelf" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="B_Genre" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="B_Binding" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="B_Pages" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Imported" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="P_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>
